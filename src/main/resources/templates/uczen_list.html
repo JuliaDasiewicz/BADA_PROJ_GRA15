@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+LISTA UCZNIÓWw
+
+<!-- Table -->
+<table border="1" cellpadding="10"> <!-– border –
+    obramowanie, cellpadding – rozmiar komórki -->
+    <!-- Table header -->
+    <thead>
+    <tr> <!-- Table row -->
+        <th>ID</th>
+        <!–- Table column -->
+        <th>Imie</th>
+        <th>Nazwisko</th>
+        <th>PESEL</th>
+        <th>Plec</th>
+        <th>Data urodzenia</th>
+    </tr>
+    </thead>
+    <!-- Table body -->
+    <tbody>
+    <tr th:each="uczen : ${uczenList}">
+        <td th:text="${uczen.nr_ucznia}">ID</td>
+        <td th:text="${uczen.imie}">Item Name</td>
+        <td th:text="${uczen.nazwisko}"/>
+        <td th:text="${uczen.PESEL}"/>
+        <td th:text="${uczen.plec}"/>
+        <td th:text="${uczen.dataUrodzenia}"/>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
