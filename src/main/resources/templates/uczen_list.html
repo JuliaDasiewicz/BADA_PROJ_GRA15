@@ -2,24 +2,57 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>List of students</title>
+
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+    <link th:rel="stylesheet" th:href="@{/css/stylesheet.css} "/>
+
 </head>
 <body>
 
-LISTA UCZNIÓWw
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light static-top">
+    <div class="container">
+        <a class="navbar-brand" href="/">BADA Grupa 15A - Szkoła</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Strona główna
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/uczen_list}">Uczniowie</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/main}">Logowanie</a></a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
 
 <!-- Table -->
-<table border="1" cellpadding="10"> <!-– border –
+<table style="margin-left:auto;margin-right:auto;" border="1" cellpadding="10"> <!-– border –
     obramowanie, cellpadding – rozmiar komórki -->
     <!-- Table header -->
     <thead>
     <tr> <!-- Table row -->
         <th>ID</th>
         <!–- Table column -->
-        <th>Imie</th>
+        <th>Imię</th>
         <th>Nazwisko</th>
         <th>PESEL</th>
-        <th>Plec</th>
+        <th>Płeć</th>
         <th>Data urodzenia</th>
     </tr>
     </thead>
@@ -35,6 +68,33 @@ LISTA UCZNIÓWw
     </tr>
     </tbody>
 </table>
+
+<div th:if="${admin}" style="margin-left:auto; margin-right:auto">
+    <p> Dodaj ucznia </p>
+    <form action="/dodaj_ucznia" method="post">
+    <input 
+      type="hidden" 
+      th:name="${_csrf.parameterName}" 
+      th:value="${_csrf.token}" />
+        <label for="fimie">Imie</label><br>
+        <input type="text" id="fimie" name="imie"><br>
+
+        <label for="fnazwisko">Nazwisko</label><br>
+        <input type="text" id="fnazwisko" name="nazwisko"><br><br>
+
+        <label for="fpesel">PESEL</label><br>
+        <input type="text" id="fpesel" name="pesel"><br><br>
+
+        <label for="fplec">Płeć</label><br>
+        <input type="text" id="fplec" name="plec"><br><br>
+
+        <label for="fdataurodzenia"> Data Urodzenia </label><br>
+        <input type="text" id="fdataurodzenia" name="dataurodzenia"><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+</div>
+
 
 </body>
 </html>

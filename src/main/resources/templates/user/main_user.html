@@ -6,14 +6,15 @@
     <title>Main User Page</title>
 
     <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+    <link th:rel="stylesheet" th:href="@{/css/stylesheet.css} "/>
 
 </head>
 <body>
 
 <!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+<nav class="navbar navbar-expand-lg navbar-light bg-light static-top">
     <div class="container">
-        <a class="navbar-brand" href="/">BDBT Spring Boot Project - Part II</a>
+        <a class="navbar-brand" href="/">BADA Grupa 15A - Szkoła</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                 aria-controls="navbarResponsive"
                 aria-expanded="false" aria-label="Toggle navigation">
@@ -23,17 +24,15 @@
             <ul class="navbar-nav ml-auto">
 
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/index}">Home</a>
+                    <a class="nav-link" th:href="@{/index}">Strona główna</a>
                 </li>
 
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Main
-                        <span class="sr-only">(current)</span>
-                    </a>
+                    <a class="nav-link" th:href="@{/uczen_list}">Uczniowie</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" th:inline="text" style="color:lightskyblue;">You are logged in as <b
+                    <a class="nav-link" th:inline="text" style="color:lightskyblue;">Jesteś zalogowany jako <b
                             style="text-transform:capitalize">[[${#httpServletRequest.remoteUser}]]</b></a>
                 </li>
 
@@ -48,13 +47,13 @@
         <div class="col-md-10 mt-5">
             <form method="post" th:action="@{/index}">
                 <div class="form-group">
-                    <label style="font-size:30px" th:inline="text">Welcome <a
+                    <label style="font-size:30px" th:inline="text">Witaj <a
                             style="color:lightskyblue; text-transform:capitalize"><b>[[${#httpServletRequest.remoteUser}]]</b></a>
-                        to the main page!</label>
-                    <div style="font-size:20px">If you want to logout, click "Logout" button under this text.</div>
+                        na stronie głównej!</label>
+                    <div style="font-size:20px">Jeśli chcesz się wylogować, kliknij przycisk "Wyloguj" pod tym tekstem.</div>
                 </div>
 
-                <button class="btn btn-primary" type="submit" onclick="successfullyLogout()" value="Sign Out">Logout
+                <button class="btn btn-primary" type="submit" onclick="successfullyLogout()" value="Sign Out">Wyloguj
                 </button>
             </form>
         </div>
